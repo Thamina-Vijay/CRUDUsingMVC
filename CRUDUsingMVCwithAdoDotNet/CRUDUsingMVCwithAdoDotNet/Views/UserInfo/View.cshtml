@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CRUDUsingMVC.Models.UserInfoModel>
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Page UserInfo", "View", null, new { @class = "btn btn-primary" })
+</p>
+
+<br />
+<table class="table" style="width: 1200px;">
+    <tr>
+        <th>
+            <b>ID</b>
+        </th>
+        <th>
+            <b>Name</b>
+        </th>
+        <th>
+            <b>Email</b>
+        </th>
+        <th>
+            <b>RetypeEmail</b>
+        </th>
+
+        @*<th>
+            <b>Phone</b>
+        </th>*@
+
+        <th>
+            <b>Image</b>
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td style="width: 500px;">
+                    @Html.Raw(item.Name)
+                </td>
+                <td>
+                    <img src="/Content/RetrieveImage/@item.Id" alt="" height=100 width=200 />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetypeEmail)
+                </td>
+
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+
+            </tr>
+        }
+    }
+</table>
